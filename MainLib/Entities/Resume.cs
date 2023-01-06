@@ -6,10 +6,10 @@ namespace MainLib.Entities
     {
         //TODO: Set json property names for all properties
         [JsonPropertyName("basics")]
-        public Basics? Basics { get; set; }
+        public virtual Basics? Basics { get; set; }
         public virtual IList<Work>? work { get; set; }
-        public IList<Volunteer>? volunteer { get; set; }
-        public IList<Education>? education { get; set; }
+        public virtual IList<Volunteer>? volunteer { get; set; }
+        public virtual IList<Education>? education { get; set; }
         public virtual IList<Award>? awards { get; set; }
         public virtual IList<Certificate>? certificates { get; set; }
         public virtual IList<Publication>? publications { get; set; }

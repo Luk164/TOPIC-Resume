@@ -9,7 +9,7 @@
         public string phone { get; set; }
         public string url { get; set; }
         public string summary { get; set; }
-        public Location? location { get; set; }
+        public virtual Location? location { get; set; }
         public virtual IList<Profile> profiles { get; set; }
     }
 

@@ -9,6 +9,8 @@
         public string startDate { get; set; }
         public string endDate { get; set; }
         public string score { get; set; }
+
+        //Only supported in pgsql
         public IList<string> courses { get; set; }
     }
 
