@@ -1,0 +1,37 @@
+﻿@page "/"
+@using System.Security.Claims;
+@using TOPIC_Resume.Entities;
+@inject ApplicationDbContext AppDbContext;
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<PageTitle>Index</PageTitle>
+<AuthorizeView>
+    <Authorized>
+        <h1>Hello, @context?.User?.Identity?.Name!</h1>
+        <p>You can only see this content if you're authenticated.</p>
+    </Authorized>
+    <Authorizing>
+        <h1>Authentication in progress</h1>
+        <p>You can only see this content while authentication is in progress.</p>
+    </Authorizing>
+</AuthorizeView>
+
+<Button Color="Color.Dark" Outline="true">Test</Button>
+
+@code
+{
+    [CascadingParameter]
+    private Task<AuthenticationState>? authenticationStateTask { get; set; }
+
+    private CustomIdentityUser? CurrentUser { get; set; }
+
+    protected override async Task<Task> OnInitializedAsync()
+    {
+        if (authenticationStateTask is null)
+        {
+            throw new NullReferenceException("ERROR: AuthenticationStateTask must not be null!");
+        }
+        CurrentUser = AppDbContext.GetCustomIdentityUser(await authenticationStateTask);
+        return base.OnInitializedAsync();
+    }
+}
