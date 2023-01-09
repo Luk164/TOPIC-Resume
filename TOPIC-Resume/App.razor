@@ -1,5 +1,5 @@
 ﻿<CascadingAuthenticationState>
-    <ThemeProvider Theme="@theme">
+    @*<ThemeProvider Theme="@theme">*@
         <Router AppAssembly="@typeof(App).Assembly">
             <Found Context="routeData">
                 <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -12,57 +12,57 @@
                 </LayoutView>
             </NotFound>
         </Router>
-    </ThemeProvider>
+    @*</ThemeProvider>*@
 </CascadingAuthenticationState>
 
 @code {
-    private Theme theme = new Theme
-    {
-        ColorOptions = new ThemeColorOptions
-        {
-            Primary = "#024462",
-            Secondary = "#076D9C",
-            Info = "#CCDBDC"
-        },
+    //private Theme theme = new Theme
+    //{
+    //    ColorOptions = new ThemeColorOptions
+    //    {
+    //        Primary = "#024462",
+    //        Secondary = "#076D9C",
+    //        Info = "#CCDBDC"
+    //    },
 
-        BackgroundOptions = new ThemeBackgroundOptions
-        {
-            Primary = "#076D9C",
-            Secondary = "#CCDBDC",
-            Info = "#CCDBDC",
-        },
+    //    BackgroundOptions = new ThemeBackgroundOptions
+    //    {
+    //        Primary = "#076D9C",
+    //        Secondary = "#CCDBDC",
+    //        Info = "#CCDBDC",
+    //    },
 
-        ButtonOptions = new ThemeButtonOptions
-        {
-            Padding = "10px",
-            BoxShadowSize = "2px, 5px",
+    //    ButtonOptions = new ThemeButtonOptions
+    //    {
+    //        Padding = "10px",
+    //        BoxShadowSize = "2px, 5px",
 
-        },
+    //    },
 
-        DropdownOptions = new ThemeDropdownOptions
-        {
-            BorderRadius = "2px",
-        },
+    //    DropdownOptions = new ThemeDropdownOptions
+    //    {
+    //        BorderRadius = "2px",
+    //    },
 
-        InputOptions = new ThemeInputOptions
-        {
-            Color = "#024462",
-        },
+    //    InputOptions = new ThemeInputOptions
+    //    {
+    //        Color = "#024462",
+    //    },
 
-        ModalOptions = new ThemeModalOptions
-        {
-            BorderRadius = "2px",
-        },
+    //    ModalOptions = new ThemeModalOptions
+    //    {
+    //        BorderRadius = "2px",
+    //    },
 
-        TableOptions = new ThemeTableOptions
-        {
-            BorderRadius = "2px"
-        },
+    //    TableOptions = new ThemeTableOptions
+    //    {
+    //        BorderRadius = "2px"
+    //    },
 
-        SidebarOptions = new ThemeSidebarOptions
-        {
-            BackgroundColor = "#024462",
-            Color = "#fff"
-        }
-    };
+    //    SidebarOptions = new ThemeSidebarOptions
+    //    {
+    //        BackgroundColor = "#024462",
+    //        Color = "#fff"
+    //    }
+    //};
 }

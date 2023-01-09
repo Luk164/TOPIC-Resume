@@ -1,6 +1,6 @@
 ﻿namespace MainLib.Entities
 {
-    public class Certificate
+    public class Certificate : BaseEntity
     {
         public string name { get; set; }
         public string date { get; set; }

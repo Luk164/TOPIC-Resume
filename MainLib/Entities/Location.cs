@@ -1,6 +1,6 @@
 ﻿namespace MainLib.Entities
 {
-    public class Location
+    public class Location : BaseEntity
     {
         public string address { get; set; }
         public string postalCode { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace MainLib.Entities
 {
-    public class Publication
+    public class Publication : BaseEntity
     {
         public string name { get; set; }
         public string publisher { get; set; }

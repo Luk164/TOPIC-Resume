@@ -2,7 +2,7 @@
 
 namespace MainLib.Entities
 {
-    public class Resume
+    public class Resume : BaseEntity
     {
         //TODO: Set json property names for all properties
         [JsonPropertyName("basics")]

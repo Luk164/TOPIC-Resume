@@ -1,9 +1,9 @@
 ﻿namespace MainLib.Entities
 {
-    public class Interest
+    public class Interest : BaseEntity
     {
         public string name { get; set; }
-        public IList<string> keywords { get; set; }
+        public string[] keywords { get; set; }
     }
 
 }

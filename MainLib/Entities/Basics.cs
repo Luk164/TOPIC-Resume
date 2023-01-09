@@ -1,6 +1,6 @@
 ﻿namespace MainLib.Entities
 {
-    public class Basics
+    public class Basics : BaseEntity
     {
         public string name { get; set; }
         public string label { get; set; }

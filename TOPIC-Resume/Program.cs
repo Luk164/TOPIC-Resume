@@ -21,13 +21,10 @@ namespace TOPIC_Resume
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
-            //        throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            //builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseLazyLoadingProxies().UseSqlServer(connectionString));
-
-            builder.Services.AddDbContext<ApplicationDbContext>(dbOptionsBuilder =>
-                dbOptionsBuilder.SetupDatabaseBuilder(builder.Configuration));
+            var connectionString = builder.Configuration.GetConnectionString("PostgreSQLConnString") ??
+                    throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseLazyLoadingProxies().UseNpgsql(connectionString));
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
             builder.Services.AddDefaultIdentity<CustomIdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -75,24 +72,6 @@ namespace TOPIC_Resume
             app.MapFallbackToPage("/_Host");
 
             app.Run();
-        }
-
-        /// <summary>
-        /// Allows Entity Framework to find and migrate DbContext. Only used at design time!
-        /// </summary>
-        // ReSharper disable once UnusedType.Global Used in design time
-        public class DbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
-        {
-            public ApplicationDbContext CreateDbContext(string[] args)
-            {
-                //At design time the appsettings configuration is not loaded automatically
-                var configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json")
-                    .Build();
-
-                return StaticUtilities.SetupDatabase(configuration);
-            }
         }
     }
 }
