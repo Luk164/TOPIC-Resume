@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TOPIC_Resume.Data;
 
@@ -11,9 +12,11 @@ using TOPIC_Resume.Data;
 namespace TOPICResume.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230109080838_JsonColumns")]
+    partial class JsonColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -278,9 +281,7 @@ namespace TOPICResume.Migrations
 
                             b1.ToTable("Resumes");
 
-                            b1
-                                .ToJson("Basics")
-                                .HasAnnotation("Relational:JsonPropertyName", "basics");
+                            b1.HasAnnotation("Relational:JsonPropertyName", "basics");
 
                             b1.WithOwner()
                                 .HasForeignKey("ResumeId");
@@ -327,6 +328,8 @@ namespace TOPICResume.Migrations
                                         .ValueGeneratedOnAdd()
                                         .HasColumnType("int");
 
+                                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b2.Property<int>("Id"));
+
                                     b2.Property<string>("network")
                                         .IsRequired()
                                         .HasColumnType("nvarchar(max)");
@@ -341,7 +344,7 @@ namespace TOPICResume.Migrations
 
                                     b2.HasKey("BasicsResumeId", "Id");
 
-                                    b2.ToTable("Resumes");
+                                    b2.ToTable("Profile");
 
                                     b2.WithOwner()
                                         .HasForeignKey("BasicsResumeId");

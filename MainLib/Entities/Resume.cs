@@ -4,6 +4,8 @@ namespace MainLib.Entities
 {
     public class Resume
     {
+        [JsonIgnore]
+        public int Id { get; set; }
         //TODO: Set json property names for all properties
         [JsonPropertyName("basics")]
         public virtual Basics? Basics { get; set; }
